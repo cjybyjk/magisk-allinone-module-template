@@ -1,9 +1,7 @@
-# Magisk多合一模块安装脚本
+# Magisk多合一模块示例
+特别感谢: 包包包先生 @ coolapk
 
-## License: GPL v3
-## 特别感谢: 包包包先生 @ coolapk
-
-## 使用方法请查看以下文件
+### 使用方法请查看以下文件
 - config.sh
 - common/mods/example/*
 
