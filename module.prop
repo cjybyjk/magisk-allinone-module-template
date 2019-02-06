@@ -1,0 +1,8 @@
+id=allinone_template
+name=Magisk多合一模块示例
+version=v1
+versionCode=1
+author=cjybyjk @ coolapk
+minMagisk=17000
+# 不要改动这个注释下面的内容！
+description=
