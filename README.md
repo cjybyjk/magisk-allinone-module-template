@@ -2,6 +2,7 @@
 特别感谢: 包包包先生 @ coolapk
 
 ### 使用方法请查看以下文件
+- guide.md
 - config.sh
 - common/mods/example/*
 

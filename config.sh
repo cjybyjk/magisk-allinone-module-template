@@ -3,7 +3,6 @@
 #   包包包先生 @ coolapk
 
 # 配置
-# 在正式版中请关闭调试开关
 DEBUG_FLAG=true
 AUTOMOUNT=true
 POSTFSDATA=true
@@ -11,8 +10,6 @@ LATESTARTSERVICE=true
 
 var_device="`grep_prop ro.product.device`"
 var_version="`grep_prop ro.build.version.release`"
-# 获取MIUI版本
-# var_version="`grep_prop ro.build.version.incremental`" 
 
 # 在这里设置你想要在模块安装过程中显示的信息
 ui_print "*******************************"
@@ -94,34 +91,37 @@ chooseportold() {
 
 # 测试音量键
 if keytest; then
-	FUNCTION=chooseport
-    $DEBUG_FLAG && ui_print "func: $FUNCTION"
+	VOLKEY_FUNC=chooseport
+  $DEBUG_FLAG && ui_print "func: $VOLKEY_FUNC"
 	ui_print "*******************************"
 else
-	FUNCTION=chooseportold
-    $DEBUG_FLAG && ui_print "func: $FUNCTION"
+	VOLKEY_FUNC=chooseportold
+  $DEBUG_FLAG && ui_print "func: $VOLKEY_FUNC"
 	ui_print "*******************************"
 	ui_print "- 检测到遗留设备！使用旧的 keycheck 方案 -"
 	ui_print "- 进行音量键录入 -"
 	ui_print "   录入：请按下 [音量+] 键："
-	$FUNCTION "UP"
+	$VOLKEY_FUNC "UP"
 	ui_print "   已录入 [音量+] 键。"
 	ui_print "   录入：请按下 [音量-] 键："
-	$FUNCTION "DOWN"
+	$VOLKEY_FUNC "DOWN"
 	ui_print "   已录入 [音量-] 键。"
 ui_print "*******************************"
 fi
 
+# 替换文件夹列表
+REPLACE=""
+
 # 加载可用模块
 cd $INSTALLER/common/mods
-for mods in $(ls)
+for MOD in $(ls)
 do
-  if [ -f $mods/mod_info.sh ]; then
-    source $mods/mod_info.sh
+  if [ -f $MOD/mod_info.sh ]; then
+    source $MOD/mod_info.sh
     $DEBUG_FLAG && ui_print "load_mods: require_device:$require_device"
     $DEBUG_FLAG && ui_print "load_mods: require_version:$require_version"
     ui_print "  [$mod_name]安装"
-    MODFILEDIR="$INSTALLER/common/$mods/files"
+    MODFILEDIR="$INSTALLER/common/mods/$MOD/files"
     if [ "`echo $var_device | egrep $require_device`" = "" ]; then
         ui_print "   [$mod_name]不支持您的设备。"
     elif [ "`echo $var_version | egrep $require_version`" = "" ]; then
@@ -130,7 +130,7 @@ do
         ui_print "  - 请按音量键选择$mod_install_info -"
         ui_print "   [音量+]：$mod_yes_text"
         ui_print "   [音量-]：$mod_no_text"
-        if $FUNCTION; then
+        if $VOLKEY_FUNC; then
             ui_print "   已选择$mod_yes_text。"
             mod_install_yes
             echo -n "[$mod_yes_text]; " >> $INSTALLER/module.prop

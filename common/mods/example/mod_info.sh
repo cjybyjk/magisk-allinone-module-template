@@ -1,16 +1,17 @@
+# 安装时显示的模块名称
 mod_name="测试模板"
+# 安装时显示的提示
 mod_install_info="是否安装$mod_name"
-# mod_install_info="是否启用xx功能"
+# 按下[音量+]选择的功能提示
 mod_yes_text="安装$mod_name"
+# 按下[音量-]选择的功能提示
 mod_no_text="不安装$mod_name"
-require_device="cancro"
-# 支持正则表达式
-#require_device="cancro|shamu|viper"
-require_version="7.1.2"
-# 支持正则表达式
-#require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
+# 支持的设备，支持正则表达式
+require_device="cancro|shamu|viper"
+# 支持的系统版本，持正则表达式
+require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
 
-# 按下[音量+]时执行
+# 按下[音量+]时执行的函数
 # 如果不需要，请保留函数结构和return 0
 mod_install_yes()
 {
@@ -32,7 +33,7 @@ mod_install_yes()
     return 0
 }
 
-# 按下[音量-]时执行
+# 按下[音量-]时执行的函数
 # 如果不需要，请保留函数结构和return 0
 mod_install_no()
 {

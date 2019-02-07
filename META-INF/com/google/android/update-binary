@@ -94,6 +94,12 @@ request_zip_size_check "$ZIP"
 # 这个函数将挂载 $IMG 到 $MOUNTPATH，并根据 $reqSizeM 调整镜像大小
 mount_magisk_img
 
+# 检查已安装的 Magisk 版本
+MIN_VER=`grep_prop minMagisk $INSTALLER/module.prop`
+[ ! -z $MAGISK_VER_CODE -a $MAGISK_VER_CODE -ge $MIN_VER ] || require_new_magisk
+MODID=`grep_prop id $INSTALLER/module.prop`
+MODPATH=$MOUNTPATH/$MODID
+
 # 创建模块路径
 rm -rf $MODPATH 2>/dev/null
 mkdir -p $MODPATH
@@ -104,12 +110,6 @@ mkdir -p $MODPATH/post-fs-data_sh/
 # 加载设置
 . $INSTALLER/config.sh
 
-# 检查已安装的 Magisk 版本
-MIN_VER=`grep_prop minMagisk $INSTALLER/module.prop`
-[ ! -z $MAGISK_VER_CODE -a $MAGISK_VER_CODE -ge $MIN_VER ] || require_new_magisk
-MODID=`grep_prop id $INSTALLER/module.prop`
-MODPATH=$MOUNTPATH/$MODID
-
 # 将文件解压缩到 system 。如果需要，可以使用自己的方法
 # ui_print "- 正在解压模块文件"
 # unzip -o "$ZIP" 'system/*' -d $MODPATH >&2
@@ -118,9 +118,9 @@ MODPATH=$MOUNTPATH/$MODID
 rm -f $MODPATH/system/placeholder 2>/dev/null
 
 # 处理 replace 文件夹
-#for TARGET in $REPLACE; do
-#  mktouch $MODPATH$TARGET/.replace
-#done
+for TARGET in $REPLACE; do
+  mktouch $MODPATH$TARGET/.replace
+done
 
 # 自动挂载
 $AUTOMOUNT && touch $MODPATH/auto_mount
