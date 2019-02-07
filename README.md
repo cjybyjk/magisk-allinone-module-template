@@ -1,5 +1,10 @@
 # Magisk多合一模块模板
-特别感谢: 包包包先生 @ coolapk
+
+### License
+- [MIT](LICENSE)
+
+### Thanks to
+- 包包包先生 @ coolapk
 
 ### 使用方法请查看以下文件
 - [guide.md](guide.md)

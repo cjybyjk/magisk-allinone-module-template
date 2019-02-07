@@ -24,7 +24,7 @@
     ```
         common/mods/
         ├── .
-        |
+        │
         ├── $MOD                   <--- The folder is named with the ID of the module
         │   │
         │   ├── mod_info.sh        <--- Include the information of the module
@@ -38,7 +38,7 @@
         │   │
         │   ├── .                  <--- Any additional files / folders are allowed
         │   └── .
-        |
+        │
         ├── another_mods
         │   ├── .
         │   └── .
