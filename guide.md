@@ -25,7 +25,7 @@
         common/mods/
         ├── .
         |
-        ├── $MOD                    <--- The folder is named with the ID of the module
+        ├── $MOD                   <--- The folder is named with the ID of the module
         │   │
         │   ├── mod_info.sh        <--- Include the information of the module
         │   │
@@ -62,7 +62,7 @@
         mod_no_text="不安装$mod_name"
         # 支持的设备，支持正则表达式
         require_device="cancro|shamu|viper"
-        # 支持的系统版本，持正则表达式
+        # 支持的系统版本，支持正则表达式
         require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
     ```
 - `mod_info.sh` 与 `config.sh` 共享所有变量，如：
