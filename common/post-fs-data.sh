@@ -9,5 +9,5 @@ MODDIR=${0%/*}
 cd $MODDIR/post-fs-data_sh
 for scripts in $(ls)
 do
-    sh $scripts $MODDIR
+    sh $scripts $MODDIR &
 done

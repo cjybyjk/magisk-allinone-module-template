@@ -20,6 +20,30 @@ ui_print "*******************************"
 ui_print "  你的设备:$var_device"
 ui_print "  系统版本:$var_version"
 
+# $1:prop_text
+add_sysprop()
+{
+  echo "$1" >> $MODPATH/system.prop
+}
+
+# $1:path/to/file
+add_sysprop_file()
+{
+  cat "$1" >> $MODPATH/system.prop
+}
+
+# $1:path/to/file
+add_service_sh()
+{
+  cp "$1" $MODPATH/service_sh/
+}
+
+# $1:path/to/file
+add_post-fs-data_sh()
+{
+  cp "$1" $MODPATH/post-fs-data_sh/
+}
+
 # 准备进行音量键安装
 # Keycheck binary by someone755 @Github, idea for code below by Zappo @xda-developers
 KEYCHECK=$INSTALLER/common/keycheck
@@ -106,17 +130,11 @@ do
         ui_print "   [音量-]：$mod_no_text"
         if $FUNCTION; then
             ui_print "   已选择$mod_yes_text。"
-            if [ -f "$mods/mod_install_yes.sh" ]; then
-                $DEBUG_FLAG && ui_print "load_mods: runsh"
-                sh $mods/mod_install_yes.sh $mods $INSTALLER $MODPATH
-            fi
+            mod_install_yes
             echo -n "[$mod_yes_text]; " >> $INSTALLER/module.prop
         else
             ui_print "   已选择$mod_no_text。"
-            if [ -f "$mods/mod_install_no.sh" ]; then
-                $DEBUG_FLAG && ui_print "load_mods: runsh"
-                sh $mods/mod_install_no.sh $mods $INSTALLER $MODPATH
-            fi
+            mod_install_no
             echo -n "[$mod_no_text]; " >> $INSTALLER/module.prop
         fi
     fi
@@ -124,3 +142,4 @@ do
 done
 
 echo "" >> $INSTALLER/module.prop
+
