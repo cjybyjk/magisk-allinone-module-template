@@ -2,9 +2,9 @@
 特别感谢: 包包包先生 @ coolapk
 
 ### 使用方法请查看以下文件
-- guide.md
-- config.sh
-- common/mods/example/*
+- [guide.md](guide.md)
+- [config.sh](config.sh)
+- [common/mods/example/*](common/mods/example/)
 
 ### 注意事项
 - 请不要将 `common/mods/example/` 留在正式版模块中
