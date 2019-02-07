@@ -3,6 +3,7 @@
 #   包包包先生 @ coolapk
 
 # 配置
+# 在正式版中请关闭调试开关
 DEBUG_FLAG=true
 AUTOMOUNT=true
 POSTFSDATA=true
@@ -39,9 +40,9 @@ add_service_sh()
 }
 
 # $1:path/to/file
-add_post-fs-data_sh()
+add_postfsdata_sh()
 {
-  cp "$1" $MODPATH/post-fs-data_sh/
+  cp "$1" $MODPATH/postfsdata_sh/
 }
 
 # 准备进行音量键安装

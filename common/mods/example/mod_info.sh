@@ -26,7 +26,7 @@ mod_install_yes()
     # 添加service.sh
     add_service_sh $MODFILEDIR/service1.sh
     # 添加post-fs-data.sh
-    add_post-fs-data_sh $MODFILEDIR/post-fs-data1.sh
+    add_postfsdata_sh $MODFILEDIR/post-fs-data1.sh
 
     ui_print "设置权限"
     set_perm_recursive  $MODPATH  0  0  0755  0644
@@ -48,7 +48,7 @@ mod_install_no()
     # 添加service.sh
     add_service_sh $MODFILEDIR/service2.sh
     # 添加post-fs-data.sh
-    add_post-fs-data_sh $MODFILEDIR/post-fs-data2.sh
+    add_postfsdata_sh $MODFILEDIR/post-fs-data2.sh
 
     ui_print "设置权限"
     set_perm_recursive  $MODPATH  0  0  0755  0644
