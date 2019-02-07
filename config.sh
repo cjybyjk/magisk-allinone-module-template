@@ -121,6 +121,7 @@ do
     $DEBUG_FLAG && ui_print "load_mods: require_device:$require_device"
     $DEBUG_FLAG && ui_print "load_mods: require_version:$require_version"
     ui_print "  [$mod_name]安装"
+    MODFILEDIR="$INSTALLER/common/$mods/files"
     if [ "`echo $var_device | egrep $require_device`" = "" ]; then
         ui_print "   [$mod_name]不支持您的设备。"
     elif [ "`echo $var_version | egrep $require_version`" = "" ]; then

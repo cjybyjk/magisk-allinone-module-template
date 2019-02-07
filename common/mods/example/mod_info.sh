@@ -10,8 +10,6 @@ require_version="7.1.2"
 # 支持正则表达式
 #require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
 
-MODFILEDIR="$INSTALLER/common/$mod/files"
-
 # 按下[音量+]时执行
 # 如果不需要，请保留函数结构和return 0
 mod_install_yes()
