@@ -105,7 +105,7 @@ rm -rf $MODPATH 2>/dev/null
 mkdir -p $MODPATH
 # 脚本执行路径
 mkdir -p $MODPATH/service_sh/
-mkdir -p $MODPATH/post-fs-data_sh/
+mkdir -p $MODPATH/postfsdata_sh/
 
 # 加载设置
 . $INSTALLER/config.sh
