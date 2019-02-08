@@ -6,10 +6,9 @@ MODDIR=${0%/*}
 # 这个脚本将以 post-fs-data 模式执行
 # 更多信息请访问 Magisk 主题
 
-[ ! -d "$MODDIR/postfsdata_sh" ] && return 1
+[ ! -d "$MODDIR/postfsdata_sh" ] && exit 1
 
-cd $MODDIR/postfsdata_sh
-for scripts in $(ls)
+for scripts in $MODDIR/postfsdata_sh/*.sh
 do
     sh $scripts $MODDIR &
 done

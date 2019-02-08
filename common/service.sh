@@ -6,10 +6,9 @@ MODDIR=${0%/*}
 # 这个脚本将以 late_start service 模式执行
 # 更多信息请访问 Magisk 主题
 
-[ ! -d "$MODDIR/service_sh" ] && return 1
+[ ! -d "$MODDIR/service_sh" ] && exit 1
 
-cd $MODDIR/service_sh
-for scripts in $(ls)
+for scripts in $MODDIR/service_sh/*.sh
 do
     sh $scripts $MODDIR &
 done
