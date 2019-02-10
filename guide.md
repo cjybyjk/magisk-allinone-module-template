@@ -19,7 +19,7 @@
 
 #### Step 2：添加功能模块
 - 所有的功能模块都需要放在 `common/mods/` 文件夹下
-- 模板提供了 `common/mods/example` 作为参考
+- 模板提供了 `common/mods/example` 和 `common/mods/empty` 作为参考
 - 功能模块的目录格式：
     ```
         common/mods/
@@ -47,7 +47,7 @@
 - 将要用到的文件都放进 `common/mods/$MOD/files/`
 - 创建 `common/mods/$MOD/mod_info.sh`
 #### Step 3：编写 `mod_info.sh`
-- 请参考 `common/mods/example/mod_info.sh`
+- 请参考 `common/mods/example/mod_info.sh` `common/mods/empty/mod_info.sh`
 
 ##### 变量说明
 - 安装脚本会读取这几个变量，请修改它们以符合你的要求：
