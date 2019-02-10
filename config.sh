@@ -129,16 +129,24 @@ REPLACE=""
 MODS_SELECTED_YES=""
 MODS_SELECTED_NO=""
 
+SKIP_FLAG=false
+
 # 加载可用模块
 cd $INSTALLER/common/mods
 for MOD in $(ls)
 do
   if [ -f $MOD/mod_info.sh ]; then
+    MODFILEDIR="$INSTALLER/common/mods/$MOD/files"
     source $MOD/mod_info.sh
     $DEBUG_FLAG && ui_print "load_mods: require_device:$require_device"
     $DEBUG_FLAG && ui_print "load_mods: require_version:$require_version"
+    $DEBUG_FLAG && ui_print "load_mods: SKIP_FLAG:$SKIP_FLAG"
     ui_print "  [$mod_name]安装"
-    MODFILEDIR="$INSTALLER/common/mods/$MOD/files"
+    if $SKIP_FLAG ; then
+      SKIP_FLAG=false
+      ui_print "  跳过[$mod_name]安装"
+      continue
+    fi
     if [ "`echo $var_device | egrep $require_device`" = "" ]; then
         ui_print "   [$mod_name]不支持您的设备。"
     elif [ "`echo $var_version | egrep $require_version`" = "" ]; then
