@@ -45,10 +45,10 @@ add_postfsdata_sh()
 # $1:ID of mod
 check_mod_install()
 {
-  if [ "`echo $MODS_SELECTED_YES | grep $1`" != "" ]; then
+  if [ "`echo $MODS_SELECTED_YES | grep ($1)`" != "" ]; then
       echo -n "yes"
       return 0
-  elif [ "`echo $MODS_SELECTED_NO | grep $1`" != "" ]; then
+  elif [ "`echo $MODS_SELECTED_NO | grep ($1)`" != "" ]; then
       echo -n "no"
       return 0
   fi
