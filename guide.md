@@ -71,6 +71,8 @@
         $INSTALLER # 安装程序目录
     ```
 - $REPLACE 仍然可以用来替换文件夹
+- $MODS_SELECTED_YES 包含选择了"yes"的模块(**由config.sh维护，请不要对它进行修改**)
+- $MODS_SELECTED_NO 包含选择了"no"的模块(**由config.sh维护，请不要对它进行修改**)
 
 ##### 函数说明
 - mod_install_yes：这个函数将在用户选择 **[音量+]** 时被执行
@@ -95,6 +97,7 @@
     - add_service_sh：添加 `service.sh`
     - add_postfsdata_sh：添加 `post-fs-data.sh`
     - $VOLKEY_FUNC：用于音量键选择，**[音量+]** 返回`0`，**[音量-]** 返回`1`
+    - check_mod_install：检查某个模块的安装状态，传入模块id，返回"yes"（选择 **[音量+]** ），"no"（选择 **[音量-]** ）或者"unknown"（还未安装）
     - set_perm：设置权限
     - set_perm_recursive：设置权限（递归）
 #### Step 4：打包

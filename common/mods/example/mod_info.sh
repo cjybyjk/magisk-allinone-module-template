@@ -15,6 +15,7 @@ require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
 # 如果不需要，请保留函数结构和return 0
 mod_install_yes()
 {
+    ui_print "这里应该显示yes: `check_mod_install 'example'`"
     mkdir -p $MODPATH/system/app/
     cp -r $MODFILEDIR/system/app/testapp1 $MODPATH/system/app/
 
@@ -27,7 +28,7 @@ mod_install_yes()
     # 添加post-fs-data.sh
     add_postfsdata_sh $MODFILEDIR/post-fs-data1.sh
 
-    ui_print "设置权限"
+    ui_print "    设置权限"
     set_perm_recursive  $MODPATH  0  0  0755  0644
     
     return 0
@@ -37,6 +38,7 @@ mod_install_yes()
 # 如果不需要，请保留函数结构和return 0
 mod_install_no()
 {
+    ui_print "这里应该显示no: `check_mod_install 'example'`"
     mkdir -p $MODPATH/system/app/
     cp -r $MODFILEDIR/system/app/testapp2 $MODPATH/system/app/
 
@@ -49,7 +51,7 @@ mod_install_no()
     # 添加post-fs-data.sh
     add_postfsdata_sh $MODFILEDIR/post-fs-data2.sh
 
-    ui_print "设置权限"
+    ui_print "    设置权限"
     set_perm_recursive  $MODPATH  0  0  0755  0644
     
     return 0

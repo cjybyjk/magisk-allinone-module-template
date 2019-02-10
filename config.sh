@@ -42,6 +42,19 @@ add_postfsdata_sh()
   cp "$1" $MODPATH/postfsdata_sh/
 }
 
+# $1:ID of mod
+check_mod_install()
+{
+  if [ "`echo $MODS_SELECTED_YES | grep $1`" != "" ]; then
+      echo -n "yes"
+      return 0
+  elif [ "`echo $MODS_SELECTED_NO | grep $1`" != "" ]; then
+      echo -n "no"
+      return 0
+  fi
+  echo -n "unknown"
+}
+
 # 准备进行音量键安装
 # Keycheck binary by someone755 @Github, idea for code below by Zappo @xda-developers
 KEYCHECK=$INSTALLER/common/keycheck
@@ -112,6 +125,10 @@ fi
 # 替换文件夹列表
 REPLACE=""
 
+# 已安装模块
+MODS_SELECTED_YES=""
+MODS_SELECTED_NO=""
+
 # 加载可用模块
 cd $INSTALLER/common/mods
 for MOD in $(ls)
@@ -132,10 +149,12 @@ do
         ui_print "   [音量-]：$mod_no_text"
         if $VOLKEY_FUNC; then
             ui_print "   已选择$mod_yes_text。"
+            MODS_SELECTED_YES="$MODS_SELECTED_YES ($MOD)"
             mod_install_yes
             echo -n "[$mod_yes_text]; " >> $INSTALLER/module.prop
         else
             ui_print "   已选择$mod_no_text。"
+            MODS_SELECTED_NO="$MODS_SELECTED_NO ($MOD)"
             mod_install_no
             echo -n "[$mod_no_text]; " >> $INSTALLER/module.prop
         fi
