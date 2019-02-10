@@ -7,7 +7,7 @@ mod_yes_text="安装$mod_name"
 # 按下[音量-]选择的功能提示
 mod_no_text="不安装$mod_name"
 # 支持的设备，支持正则表达式
-require_device="cancro|shamu|viper"
+require_device="cancro|shamu|viper|E6683"
 # 支持的系统版本，持正则表达式
 require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
 
