@@ -59,12 +59,12 @@ initmods()
 {
   mod_name=""
   mod_install_info=""
-  mod_yes_text=""
-  mod_yes_desc=""
-  mod_no_text=""
-  mod_no_desc=""
-  require_device=""
-  require_version=""
+  mod_select_yes_text=""
+  mod_select_yes_desc=""
+  mod_select_no_text=""
+  mod_select_no_desc=""
+  mod_require_device=""
+  mod_require_version=""
   cd $INSTALLER/common/mods
 }
 
@@ -149,44 +149,42 @@ initmods
 for MOD in $(ls)
 do
   if [ -f $MOD/mod_info.sh ]; then
-    MODFILEDIR="$INSTALLER/common/mods/$MOD/files"
+    MOD_FILES_DIR="$INSTALLER/common/mods/$MOD/files"
     source $MOD/mod_info.sh
-    $DEBUG_FLAG && ui_print "load_mods: require_device:$require_device"
-    $DEBUG_FLAG && ui_print "load_mods: require_version:$require_version"
-    $DEBUG_FLAG && ui_print "load_mods: SKIP_FLAG:$SKIP_FLAG"
     ui_print "  [$mod_name]安装"
-    if $SKIP_FLAG ; then
-      SKIP_FLAG=false
+    if $MOD_SKIP_INSTALL ; then
+      MOD_SKIP_INSTALL=false
       ui_print "  跳过[$mod_name]安装"
+      initmods
       continue
     fi
-    if [ "`echo $var_device | egrep $require_device`" = "" ]; then
+    if [ "`echo $var_device | egrep $mod_require_device`" = "" ]; then
         ui_print "   [$mod_name]不支持您的设备。"
-    elif [ "`echo $var_version | egrep $require_version`" = "" ]; then
+    elif [ "`echo $var_version | egrep $mod_require_version`" = "" ]; then
         ui_print "   [$mod_name]不支持您的系统版本。"
     else
         ui_print "  - 请按音量键选择$mod_install_info -"
-        ui_print "   [音量+]：$mod_yes_text"
-        ui_print "   [音量-]：$mod_no_text"
+        ui_print "   [音量+]：$mod_select_yes_text"
+        ui_print "   [音量-]：$mod_select_no_text"
         if $VOLKEY_FUNC; then
-            ui_print "   已选择$mod_yes_text。"
+            ui_print "   已选择$mod_select_yes_text。"
             MODS_SELECTED_YES="$MODS_SELECTED_YES ($MOD)"
             mod_install_yes
-            [ -z "$mod_yes_desc" ] && mod_yes_desc="$mod_yes_text"
-            INSTALLED="[$mod_yes_desc]; $INSTALLED"
+            [ -z "$mod_select_yes_desc" ] && mod_select_yes_desc="$mod_select_yes_text"
+            INSTALLED_FUNC="[$mod_select_yes_desc]; $INSTALLED_FUNC"
         else
-            ui_print "   已选择$mod_no_text。"
+            ui_print "   已选择$mod_select_no_text。"
             MODS_SELECTED_NO="$MODS_SELECTED_NO ($MOD)"
             mod_install_no
-            [ -z "$mod_no_desc" ] && mod_no_desc="$mod_no_text"
-            INSTALLED="[$mod_no_desc]; $INSTALLED"
+            [ -z "$mod_select_no_desc" ] && mod_select_no_desc="$mod_select_no_text"
+            INSTALLED_FUNC="[$mod_select_no_desc]; $INSTALLED_FUNC"
         fi
     fi
   fi
   initmods
 done
 
-if [ -z "$INSTALLED" ]; then
+if [ -z "$INSTALLED_FUNC" ]; then
   ui_print "未安装任何功能 即将退出安装..."
   rm -rf $TMPDIR
   exit 1

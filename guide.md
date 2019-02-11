@@ -58,12 +58,16 @@
         mod_install_info="是否安装$mod_name"
         # 按下[音量+]选择的功能提示
         mod_yes_text="安装$mod_name"
+        # 按下[音量+]后加入module.prop的内容
+        mod_select_yes_desc=""
         # 按下[音量-]选择的功能提示
         mod_no_text="不安装$mod_name"
+        # 按下[音量-]后加入module.prop的内容
+        mod_select_no_desc=""
         # 支持的设备，支持正则表达式
-        require_device="cancro|shamu|viper"
-        # 支持的系统版本，支持正则表达式
-        require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
+        mod_require_device="cancro|shamu|viper|E6683"
+        # 支持的系统版本，持正则表达式
+        mod_require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
     ```
 - `mod_info.sh` 与 `config.sh` 共享所有变量，如：
     ```bash
@@ -74,7 +78,7 @@
 - $MODS_SELECTED_YES 包含选择了"yes"的模块(**由config.sh维护，请不要对它进行修改**)
 - $MODS_SELECTED_NO 包含选择了"no"的模块(**由config.sh维护，请不要对它进行修改**)
 - $SKIP_FLAG 可以设置为true以跳过这个安装
-- $INSTALLED 已安装的功能 将显示在模块描述中
+- $INSTALLED_FUNC 已安装的功能 将显示在模块描述中
 
 ##### 函数说明
 - mod_install_yes：这个函数将在用户选择 **[音量+]** 时被执行

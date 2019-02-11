@@ -4,12 +4,16 @@ mod_name="测试模板"
 mod_install_info="是否安装$mod_name"
 # 按下[音量+]选择的功能提示
 mod_yes_text="安装$mod_name"
+# 按下[音量+]后加入module.prop的内容
+mod_select_yes_desc=""
 # 按下[音量-]选择的功能提示
 mod_no_text="不安装$mod_name"
+# 按下[音量-]后加入module.prop的内容
+mod_select_no_desc=""
 # 支持的设备，支持正则表达式
-require_device="cancro|shamu|viper|E6683"
+mod_require_device="cancro|shamu|viper|E6683"
 # 支持的系统版本，持正则表达式
-require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
+mod_require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
 
 # 按下[音量+]时执行的函数
 # 如果不需要，请保留函数结构和return 0
@@ -17,16 +21,16 @@ mod_install_yes()
 {
     ui_print "这里应该显示yes: `check_mod_install 'example'`"
     mkdir -p $MODPATH/system/app/
-    cp -r $MODFILEDIR/system/app/testapp1 $MODPATH/system/app/
+    cp -r $MOD_FILES_DIR/system/app/testapp1 $MODPATH/system/app/
 
     # 附加值到 system.prop
     add_sysprop "ro.a.b=1"
     # 从文件附加值到 system.prop
-    add_sysprop_file $MODFILEDIR/system1.prop
+    add_sysprop_file $MOD_FILES_DIR/system1.prop
     # 添加service.sh
-    add_service_sh $MODFILEDIR/service1.sh
+    add_service_sh $MOD_FILES_DIR/service1.sh
     # 添加post-fs-data.sh
-    add_postfsdata_sh $MODFILEDIR/post-fs-data1.sh
+    add_postfsdata_sh $MOD_FILES_DIR/post-fs-data1.sh
 
     ui_print "    设置权限"
     set_perm_recursive  $MODPATH  0  0  0755  0644
@@ -40,16 +44,16 @@ mod_install_no()
 {
     ui_print "这里应该显示no: `check_mod_install 'example'`"
     mkdir -p $MODPATH/system/app/
-    cp -r $MODFILEDIR/system/app/testapp2 $MODPATH/system/app/
+    cp -r $MOD_FILES_DIR/system/app/testapp2 $MODPATH/system/app/
 
     # 附加值到 system.prop
     add_sysprop "ro.a.b=2"
     # 从文件附加值到 system.prop
-    add_sysprop_file $MODFILEDIR/system2.prop
+    add_sysprop_file $MOD_FILES_DIR/system2.prop
     # 添加service.sh
-    add_service_sh $MODFILEDIR/service2.sh
+    add_service_sh $MOD_FILES_DIR/service2.sh
     # 添加post-fs-data.sh
-    add_postfsdata_sh $MODFILEDIR/post-fs-data2.sh
+    add_postfsdata_sh $MOD_FILES_DIR/post-fs-data2.sh
 
     ui_print "    设置权限"
     set_perm_recursive  $MODPATH  0  0  0755  0644
