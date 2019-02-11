@@ -42,6 +42,15 @@ add_postfsdata_sh()
   cp "$1" $MODPATH/postfsdata_sh/
 }
 
+# $1:str
+trim()
+{
+    local trimmed=$1
+    trimmed=${trimmed%% }
+    trimmed=${trimmed## }
+    echo $trimmed
+}
+
 # $1:ID of mod
 check_mod_install()
 {
@@ -65,6 +74,7 @@ initmods()
   mod_select_no_desc=""
   mod_require_device=""
   mod_require_version=""
+  INSTALLED_FUNC="`trim \'$INSTALLED_FUNC\'`"
   cd $INSTALLER/common/mods
 }
 
@@ -168,14 +178,12 @@ do
             ui_print "   已选择$mod_select_yes_text。"
             MODS_SELECTED_YES="$MODS_SELECTED_YES ($MOD)"
             mod_install_yes
-            [ -z "$mod_select_yes_desc" ] && mod_select_yes_desc="$mod_select_yes_text"
-            INSTALLED_FUNC="[$mod_select_yes_desc]; $INSTALLED_FUNC"
+            INSTALLED_FUNC="$mod_select_yes_desc $INSTALLED_FUNC"
         else
             ui_print "   已选择$mod_select_no_text。"
             MODS_SELECTED_NO="$MODS_SELECTED_NO ($MOD)"
             mod_install_no
-            [ -z "$mod_select_no_desc" ] && mod_select_no_desc="$mod_select_no_text"
-            INSTALLED_FUNC="[$mod_select_no_desc]; $INSTALLED_FUNC"
+            INSTALLED_FUNC="$mod_select_no_desc $INSTALLED_FUNC"
         fi
     fi
   fi

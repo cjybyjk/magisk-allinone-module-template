@@ -59,7 +59,7 @@
         # 按下[音量+]选择的功能提示
         mod_yes_text="安装$mod_name"
         # 按下[音量+]后加入module.prop的内容
-        mod_select_yes_desc=""
+        mod_select_yes_desc="[$mod_yes_text]"
         # 按下[音量-]选择的功能提示
         mod_no_text="不安装$mod_name"
         # 按下[音量-]后加入module.prop的内容
@@ -104,6 +104,7 @@
     - add_postfsdata_sh：添加 `post-fs-data.sh`
     - $VOLKEY_FUNC：用于音量键选择，**[音量+]** 返回`0`，**[音量-]** 返回`1`
     - check_mod_install：检查某个模块的安装状态，传入模块id，返回"yes"（选择 **[音量+]** ），"no"（选择 **[音量-]** ）或者"unknown"（还未安装）
+    - trim：去除字符串首尾的空格
     - set_perm：设置权限
     - set_perm_recursive：设置权限（递归）
 #### Step 4：打包
