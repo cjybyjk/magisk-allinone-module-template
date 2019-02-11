@@ -159,12 +159,14 @@ do
             ui_print "   已选择$mod_yes_text。"
             MODS_SELECTED_YES="$MODS_SELECTED_YES ($MOD)"
             mod_install_yes
-            INSTALLED="[$mod_yes_text]; $INSTALLED"
+            [ -z "$mod_yes_desc" ] && mod_yes_desc="$mod_yes_text"
+            INSTALLED="[$mod_yes_desc]; $INSTALLED"
         else
             ui_print "   已选择$mod_no_text。"
             MODS_SELECTED_NO="$MODS_SELECTED_NO ($MOD)"
             mod_install_no
-            INSTALLED="[$mod_no_text]; $INSTALLED"
+            [ -z "$mod_no_desc" ] && mod_no_desc="$mod_no_text"
+            INSTALLED="[$mod_no_desc]; $INSTALLED"
         fi
     fi
   fi
