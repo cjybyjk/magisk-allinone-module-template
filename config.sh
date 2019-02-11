@@ -168,6 +168,7 @@ do
         fi
     fi
   fi
+  cd $INSTALLER/common/mods
 done
 
 if [ -z "$INSTALLED" ]; then
