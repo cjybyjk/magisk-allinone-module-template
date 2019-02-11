@@ -74,6 +74,7 @@
 - $MODS_SELECTED_YES 包含选择了"yes"的模块(**由config.sh维护，请不要对它进行修改**)
 - $MODS_SELECTED_NO 包含选择了"no"的模块(**由config.sh维护，请不要对它进行修改**)
 - $SKIP_FLAG 可以设置为true以跳过这个安装
+- $INSTALLED 已安装的功能 将显示在模块描述中
 
 ##### 函数说明
 - mod_install_yes：这个函数将在用户选择 **[音量+]** 时被执行

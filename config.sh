@@ -159,16 +159,22 @@ do
             ui_print "   已选择$mod_yes_text。"
             MODS_SELECTED_YES="$MODS_SELECTED_YES ($MOD)"
             mod_install_yes
-            echo -n "[$mod_yes_text]; " >> $INSTALLER/module.prop
+            INSTALLED="[$mod_yes_text]; $INSTALLED"
         else
             ui_print "   已选择$mod_no_text。"
             MODS_SELECTED_NO="$MODS_SELECTED_NO ($MOD)"
             mod_install_no
-            echo -n "[$mod_no_text]; " >> $INSTALLER/module.prop
+            INSTALLED="[$mod_no_text]; $INSTALLED"
         fi
     fi
   fi
 done
 
-echo "" >> $INSTALLER/module.prop
+if [ -z "$INSTALLED" ]; then
+  ui_print "未安装任何功能 即将退出安装..."
+  rm -rf $TMPDIR
+  exit 1
+fi
+
+echo "$INSTALLED" >> $INSTALLER/module.prop
 
