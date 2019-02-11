@@ -44,8 +44,10 @@
         │   └── .
         ├── .
     ```
+- 直接复制 `common/mods/empty` 并重命名文件夹
+- 注意：**文件夹的名字即模块id，且决定了安装顺序（按文件夹名正序）**
 - 将要用到的文件都放进 `common/mods/$MOD/files/`
-- 创建 `common/mods/$MOD/mod_info.sh`
+
 #### Step 3：编写 `mod_info.sh`
 - 请参考 `common/mods/example/mod_info.sh` `common/mods/empty/mod_info.sh`
 
