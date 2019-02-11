@@ -118,11 +118,9 @@ chooseportold() {
 # 测试音量键
 if keytest; then
 	VOLKEY_FUNC=chooseport
-    $DEBUG_FLAG && ui_print "func: $VOLKEY_FUNC"
 	ui_print "*******************************"
 else
 	VOLKEY_FUNC=chooseportold
-    $DEBUG_FLAG && ui_print "func: $VOLKEY_FUNC"
 	ui_print "*******************************"
 	ui_print "- 检测到遗留设备！使用旧的 keycheck 方案 -"
 	ui_print "- 进行音量键录入 -"
