@@ -5,8 +5,8 @@
 # 配置
 DEBUG_FLAG=true
 AUTOMOUNT=true
-POSTFSDATA=true
-LATESTARTSERVICE=true
+POSTFSDATA=false
+LATESTARTSERVICE=false
 
 var_device="`grep_prop ro.product.device`"
 var_version="`grep_prop ro.build.version.release`"
@@ -33,12 +33,14 @@ add_sysprop_file()
 # $1:path/to/file
 add_service_sh()
 {
+  LATESTARTSERVICE=true
   cp "$1" $MODPATH/service_sh/
 }
 
 # $1:path/to/file
 add_postfsdata_sh()
 {
+  POSTFSDATA=true
   cp "$1" $MODPATH/postfsdata_sh/
 }
 
