@@ -15,11 +15,21 @@ mod_require_device="cancro|shamu|viper|E6683"
 # 支持的系统版本，持正则表达式
 mod_require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
 
+if [ "`check_mod_install 'example'`" = "yes" ]; then
+    # 已经安装过 example
+    ui_print "    已经安装过example了，跳过安装？"
+    ui_print "   [音量+]：yes"
+    ui_print "   [音量-]：no"
+    # 进行音量键选择
+    if $VOLKEY_FUNC ; then
+        MOD_SKIP_INSTALL=true
+    fi
+fi
+
 # 按下[音量+]时执行的函数
 # 如果不需要，请保留函数结构和return 0
 mod_install_yes()
 {
-    ui_print "这里应该显示yes: `check_mod_install 'example'`"
     mkdir -p $MODPATH/system/app/
     cp -r $MOD_FILES_DIR/system/app/testapp1 $MODPATH/system/app/
 
@@ -42,7 +52,6 @@ mod_install_yes()
 # 如果不需要，请保留函数结构和return 0
 mod_install_no()
 {
-    ui_print "这里应该显示no: `check_mod_install 'example'`"
     mkdir -p $MODPATH/system/app/
     cp -r $MOD_FILES_DIR/system/app/testapp2 $MODPATH/system/app/
 
