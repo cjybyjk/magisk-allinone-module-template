@@ -75,6 +75,7 @@ initmods()
   mod_require_device=""
   mod_require_version=""
   INSTALLED_FUNC="`trim \'$INSTALLED_FUNC\'`"
+  MOD_SKIP_INSTALL=false
   cd $INSTALLER/common/mods
 }
 
@@ -149,8 +150,6 @@ REPLACE=""
 # 已安装模块
 MODS_SELECTED_YES=""
 MODS_SELECTED_NO=""
-
-MOD_SKIP_INSTALL=false
 
 # 加载可用模块
 initmods
