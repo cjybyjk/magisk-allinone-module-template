@@ -55,6 +55,19 @@ check_mod_install()
   echo -n "unknown"
 }
 
+initmods()
+{
+  mod_name=""
+  mod_install_info=""
+  mod_yes_text=""
+  mod_yes_desc=""
+  mod_no_text=""
+  mod_no_desc=""
+  require_device=""
+  require_version=""
+  cd $INSTALLER/common/mods
+}
+
 # 准备进行音量键安装
 # Keycheck binary by someone755 @Github, idea for code below by Zappo @xda-developers
 KEYCHECK=$INSTALLER/common/keycheck
@@ -132,7 +145,7 @@ MODS_SELECTED_NO=""
 SKIP_FLAG=false
 
 # 加载可用模块
-cd $INSTALLER/common/mods
+initmods
 for MOD in $(ls)
 do
   if [ -f $MOD/mod_info.sh ]; then
@@ -170,7 +183,7 @@ do
         fi
     fi
   fi
-  cd $INSTALLER/common/mods
+  initmods
 done
 
 if [ -z "$INSTALLED" ]; then
