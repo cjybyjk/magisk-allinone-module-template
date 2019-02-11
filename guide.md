@@ -77,7 +77,7 @@
 - $REPLACE 仍然可以用来替换文件夹
 - $MODS_SELECTED_YES 包含选择了"yes"的模块(**由config.sh维护，请不要对它进行修改**)
 - $MODS_SELECTED_NO 包含选择了"no"的模块(**由config.sh维护，请不要对它进行修改**)
-- $SKIP_FLAG 可以设置为true以跳过这个安装
+- $MOD_SKIP_INSTALL 可以设置为true以跳过这个安装
 - $INSTALLED_FUNC 已安装的功能 将显示在模块描述中
 
 ##### 函数说明

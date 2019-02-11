@@ -118,11 +118,11 @@ chooseportold() {
 # 测试音量键
 if keytest; then
 	VOLKEY_FUNC=chooseport
-  $DEBUG_FLAG && ui_print "func: $VOLKEY_FUNC"
+    $DEBUG_FLAG && ui_print "func: $VOLKEY_FUNC"
 	ui_print "*******************************"
 else
 	VOLKEY_FUNC=chooseportold
-  $DEBUG_FLAG && ui_print "func: $VOLKEY_FUNC"
+    $DEBUG_FLAG && ui_print "func: $VOLKEY_FUNC"
 	ui_print "*******************************"
 	ui_print "- 检测到遗留设备！使用旧的 keycheck 方案 -"
 	ui_print "- 进行音量键录入 -"
@@ -142,7 +142,7 @@ REPLACE=""
 MODS_SELECTED_YES=""
 MODS_SELECTED_NO=""
 
-SKIP_FLAG=false
+MOD_SKIP_INSTALL=false
 
 # 加载可用模块
 initmods
