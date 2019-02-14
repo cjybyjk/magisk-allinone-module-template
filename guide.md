@@ -15,7 +15,6 @@
     ```bash
         var_version="`grep_prop ro.build.version.incremental`"
     ```
-- 在测试完成后，请关闭调试开关：将 `DEBUG_FLAG=true` 改为 `DEBUG_FLAG=false`
 
 #### Step 2：添加功能模块
 - 所有的功能模块都需要放在 `common/mods/` 文件夹下

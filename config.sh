@@ -3,7 +3,6 @@
 #   包包包先生 @ coolapk
 
 # 配置
-DEBUG_FLAG=true
 AUTOMOUNT=true
 POSTFSDATA=false
 LATESTARTSERVICE=false
@@ -114,7 +113,6 @@ chooseportold() {
   $KEYCHECK
   $KEYCHECK
   SEL=$?
-  $DEBUG_FLAG && ui_print "chooseportold: $1,$SEL"
   if [ "$1" == "UP" ]; then
     UP=$SEL
   elif [ "$1" == "DOWN" ]; then
