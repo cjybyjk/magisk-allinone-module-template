@@ -197,5 +197,5 @@ if [ -z "$INSTALLED_FUNC" ]; then
   exit 1
 fi
 
-echo "$INSTALLED" >> $INSTALLER/module.prop
+echo "$INSTALLED_FUNC" >> $INSTALLER/module.prop
 
