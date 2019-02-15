@@ -5,15 +5,15 @@ mod_install_info="是否安装$mod_name"
 # 按下[音量+]选择的功能提示
 mod_select_yes_text="安装$mod_name"
 # 按下[音量+]后加入module.prop的内容
-mod_select_yes_desc="[$mod_yes_text]"
+mod_select_yes_desc="[$mod_select_yes_text]"
 # 按下[音量-]选择的功能提示
 mod_select_no_text="不安装$mod_name"
 # 按下[音量-]后加入module.prop的内容
 mod_select_no_desc=""
 # 支持的设备，支持正则表达式
-mod_require_device="cancro|shamu|viper|E6683"
+mod_require_device="cancro|shamu|viper|keyaki_dsds"
 # 支持的系统版本，持正则表达式
-mod_require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
+mod_require_version="7.[0-1].[0-2]" #(7.0.0-7.1.2)
 
 if [ "`check_mod_install 'example'`" = "yes" ]; then
     # 已经安装过 example

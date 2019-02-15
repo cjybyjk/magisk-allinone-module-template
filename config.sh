@@ -46,10 +46,10 @@ add_postfsdata_sh()
 # $1:str
 trim()
 {
-    local trimmed=$1
-    trimmed=${trimmed%% }
-    trimmed=${trimmed## }
-    echo $trimmed
+  local trimmed="$*"
+  trimmed="${trimmed%% }"
+  trimmed="${trimmed## }"
+  echo "$trimmed"
 }
 
 # $1:ID of mod
@@ -75,7 +75,7 @@ initmods()
   mod_select_no_desc=""
   mod_require_device=""
   mod_require_version=""
-  INSTALLED_FUNC="`trim \'$INSTALLED_FUNC\'`"
+  INSTALLED_FUNC="`trim $INSTALLED_FUNC`"
   MOD_SKIP_INSTALL=false
   cd $INSTALLER/common/mods
 }
