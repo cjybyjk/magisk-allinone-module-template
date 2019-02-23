@@ -159,6 +159,6 @@ if [ -z "$INSTALLED_FUNC" ]; then
   exit 1
 fi
 
-sed -i '/^ *$/d' $INSTALLER/module.prop
+sed -i '/^\s*$/d' $INSTALLER/module.prop
 echo "$INSTALLED_FUNC" >> $INSTALLER/module.prop
-sed -i '/^ *$/d' $INSTALLER/module.prop
+sed -i '/^\s*$/d' $INSTALLER/module.prop
