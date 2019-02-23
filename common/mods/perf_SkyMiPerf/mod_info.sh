@@ -54,6 +54,7 @@ mod_install_yes()
     fi
     ui_print "    设置权限"
     set_perm_recursive  $MODPATH  0  0  0755  0644
+    set_perm  $MODPATH/system/bin/powercfg 0 0 0755
     return 0
 }
 
