@@ -15,7 +15,7 @@ mod_require_device="cancro|shamu|viper|keyaki_dsds"
 # 支持的系统版本，持正则表达式
 mod_require_version="7.[0-1].[0-2]" #(7.0.0-7.1.2)
 
-if [ "`check_mod_install 'example'`" = "yes" ]; then
+if [ "`check_mod_install ''`" = "yes" ]; then
     # 已经安装过 example
     ui_print "    已经安装过example了，跳过安装？"
     ui_print "   [音量+]：yes"
