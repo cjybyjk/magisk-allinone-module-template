@@ -13,11 +13,10 @@ if [ "`check_mod_install 'perf_.{0,}'`" = "yes" ]; then
 fi
 
 # get platform
-[ "$platform" == "" ] && platform = "unsupported"
-if [ "$platform" == "unsupported" ]; then
+if [ "$platform" == "" ]; then
     for tmpPlatform in $(echo `grep "Hardware" /proc/cpuinfo | awk '{print $NF}' ; getprop "ro.product.board" ; getprop "ro.board.platform"` | tr '[A-Z]' '[a-z]') 
     do
-        if [ "unsupported" = "$platform" ]; then
+        if [ "" = "$platform" ]; then
             while read -r soctext
             do
                 if [ "`echo $tmpPlatform | egrep $(echo $soctext | cut -d : -f 1)`" != "" ]; then
