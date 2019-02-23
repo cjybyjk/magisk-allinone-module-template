@@ -98,6 +98,8 @@
             return 0
         }
     ```
+- ** 以上两个函数的返回值代表了执行结果，非零返回值会导致模块信息不被写入介绍 **
+
 - `config.sh` 中提供了几个额外的功能函数
     - add_sysprop：添加键值到 `system.prop`
     - add_sysprop_file：将整个文件附加到 `system.prop` 后

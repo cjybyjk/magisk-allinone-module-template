@@ -166,24 +166,34 @@ do
       continue
     fi
     if [ "`echo $var_device | egrep $mod_require_device`" = "" ]; then
-        ui_print "   [$mod_name]不支持您的设备。"
+      ui_print "   [$mod_name]不支持您的设备。"
     elif [ "`echo $var_version | egrep $mod_require_version`" = "" ]; then
-        ui_print "   [$mod_name]不支持您的系统版本。"
+      ui_print "   [$mod_name]不支持您的系统版本。"
     else
-        ui_print "  - 请按音量键选择$mod_install_info -"
-        ui_print "   [音量+]：$mod_select_yes_text"
-        ui_print "   [音量-]：$mod_select_no_text"
-        if $VOLKEY_FUNC; then
-            ui_print "   已选择$mod_select_yes_text。"
-            MODS_SELECTED_YES="$MODS_SELECTED_YES ($MOD)"
-            mod_install_yes
-            INSTALLED_FUNC="$mod_select_yes_desc $INSTALLED_FUNC"
+      ui_print "  - 请按音量键选择$mod_install_info -"
+      ui_print "   [音量+]：$mod_select_yes_text"
+      ui_print "   [音量-]：$mod_select_no_text"
+      if $VOLKEY_FUNC; then
+        ui_print "   已选择$mod_select_yes_text。"
+        mod_install_yes
+        run_result=$?
+        if [ $run_result -eq 0 ]; then
+          MODS_SELECTED_YES="$MODS_SELECTED_YES ($MOD)"
+          INSTALLED_FUNC="$mod_select_yes_desc $INSTALLED_FUNC"
         else
-            ui_print "   已选择$mod_select_no_text。"
-            MODS_SELECTED_NO="$MODS_SELECTED_NO ($MOD)"
-            mod_install_no
-            INSTALLED_FUNC="$mod_select_no_desc $INSTALLED_FUNC"
+          ui_print "   失败。错误: $run_result"
         fi
+      else
+        ui_print "   已选择$mod_select_no_text。"
+        mod_install_no
+        run_result=$?
+        if [ $run_result -eq 0 ]; then
+          MODS_SELECTED_NO="$MODS_SELECTED_NO ($MOD)"
+          INSTALLED_FUNC="$mod_select_no_desc $INSTALLED_FUNC"
+        else
+          ui_print "   失败。错误: $run_result"
+        fi
+      fi
     fi
   fi
   initmods
@@ -198,4 +208,3 @@ fi
 sed -i '/^ *$/d' $INSTALLER/module.prop
 echo "$INSTALLED_FUNC" >> $INSTALLER/module.prop
 sed -i '/^ *$/d' $INSTALLER/module.prop
-
