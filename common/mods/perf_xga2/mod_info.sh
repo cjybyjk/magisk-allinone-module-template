@@ -34,7 +34,7 @@ fi
 
 mod_install_yes()
 {
-    ui_print "正在安装 $mod_select_yes_desc"
+    ui_print "    正在安装 $mod_select_yes_desc"
     mkdir -p $MODPATH/system/bin/
     cp $MOD_FILES_DIR/platforms/$platform/powercfg $MODPATH/system/bin/powercfg
     add_service_sh $MOD_FILES_DIR/service.sh
