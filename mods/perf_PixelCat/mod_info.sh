@@ -13,20 +13,19 @@ if [ "`check_mod_install 'perf_.{0,}'`" = "yes" ]; then
 fi
 
 # get platform
-if [ "$platform" == "" ]; then
-    for tmpPlatform in $(echo `grep "Hardware" /proc/cpuinfo | awk '{print $NF}' ; getprop "ro.product.board" ; getprop "ro.board.platform"` | tr '[A-Z]' '[a-z]') 
-    do
-        if [ "" = "$platform" ]; then
-            while read -r soctext
-            do
-                if [ "`echo $tmpPlatform | egrep $(echo $soctext | cut -d : -f 1)`" != "" ]; then
-                    platform=$(echo $soctext | cut -d : -f 2)
-                fi
-            done < $MOD_FILES_DIR/list_of_socs
-        fi
-    done
-    [ -f "/perf_soc_model" ] && platform="`cat /perf_soc_model`"
-fi
+platform="unknown"
+for tmpPlatform in $(echo `grep "Hardware" /proc/cpuinfo | awk '{print $NF}' ; getprop "ro.product.board" ; getprop "ro.board.platform"` | tr '[A-Z]' '[a-z]') 
+do
+    if [ "" = "$platform" ]; then
+        while read -r soctext
+        do
+            if [ "`echo $tmpPlatform | egrep $(echo $soctext | cut -d : -f 1)`" != "" ]; then
+                platform=$(echo $soctext | cut -d : -f 2)
+            fi
+        done < $MOD_FILES_DIR/list_of_socs
+    fi
+done
+[ -f "/perf_soc_model" ] && platform="`cat /perf_soc_model`"
 
 if [ ! -d "$MOD_FILES_DIR/platforms/$platform/" ]; then
     MOD_SKIP_INSTALL=true

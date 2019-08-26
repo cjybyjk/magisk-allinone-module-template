@@ -2,11 +2,6 @@
 
 #### Step 1：修改`config.sh`
 - 将提示信息修改为你想要的格式
-```bash
-    ui_print "*******************************"
-    ui_print "   Magisk多合一模块示例   "
-    ui_print "*******************************"
-```
 - 如果你想要获取MIUI版本，将
     ```bash 
         var_version="`grep_prop ro.build.version.release`"
@@ -17,18 +12,18 @@
     ```
 
 #### Step 2：添加功能模块
-- 所有的功能模块都需要放在 `common/mods/` 文件夹下
-- 模板提供了 `common/mods/example` 和 `common/mods/empty` 作为参考
+- 所有的功能模块都需要放在 `mods/` 文件夹下
+- 模板提供了 `mods/example` 和 `mods/empty` 作为参考
 - 功能模块的目录格式：
     ```
-        common/mods/
+        mods/
         ├── .
         │
         ├── $MOD                   <--- The folder is named with the ID of the module
         │   │
         │   ├── mod_info.sh        <--- Include the information of the module
         │   │
-        │   ├── files              <--- Put files which will be used by the module here, it will be identified by the variable $MODFILEDIR 
+        │   ├── files              <--- Put files which will be used by the module here, it will be identified by the variable $MOD_FILES_DIR 
         │   │   ├── .
         │   │   ├── .
         │   │   └── .
@@ -43,12 +38,12 @@
         │   └── .
         ├── .
     ```
-- 直接复制 `common/mods/empty` 并重命名文件夹
-- 注意：**文件夹的名字即模块id，且决定了安装顺序（按文件夹名正序）**
-- 将要用到的文件都放进 `common/mods/$MOD/files/`
+- 直接复制 `mods/empty` 并重命名文件夹
+- **注意：文件夹的名字即模块id，且决定了安装顺序（按文件夹名正序）**
+- 将要用到的文件都放进 `mods/$MOD/files/`
 
 #### Step 3：编写 `mod_info.sh`
-- 请参考 `common/mods/example/mod_info.sh` `common/mods/empty/mod_info.sh`
+- 请参考 `mods/example/mod_info.sh` `mods/empty/mod_info.sh`
 
 ##### 变量说明
 - 安装脚本会读取这几个变量，请修改它们以符合你的要求：
@@ -70,14 +65,14 @@
         # 支持的系统版本，持正则表达式
         mod_require_version="7\.[0-1]\.[0-2]" #(7.0.0-7.1.2)
     ```
-- `mod_info.sh` 与 `config.sh` 共享所有变量，如：
+- `mod_info.sh` 与 `install.sh` 共享所有变量，如：
     ```bash
-        $MODPATH #模块安装文件夹
-        $INSTALLER # 安装程序目录
+        $MODPATH # 模块安装文件夹
+        $TMPDIR # 临时文件目录
     ```
 - $REPLACE 仍然可以用来替换文件夹
-- $MODS_SELECTED_YES 包含选择了"yes"的模块(**由config.sh维护，请不要对它进行修改**)
-- $MODS_SELECTED_NO 包含选择了"no"的模块(**由config.sh维护，请不要对它进行修改**)
+- $MODS_SELECTED_YES 包含选择了"yes"的模块(**由install.sh维护，请不要对它进行修改**)
+- $MODS_SELECTED_NO 包含选择了"no"的模块(**由install.sh维护，请不要对它进行修改**)
 - $MOD_SKIP_INSTALL 可以设置为true以跳过这个安装
 - $INSTALLED_FUNC 已安装的功能 将显示在模块描述中
 
@@ -98,9 +93,9 @@
             return 0
         }
     ```
-- ** 以上两个函数的返回值代表了执行结果，非零返回值会导致模块信息不被写入介绍 **
+- ** 以上两个函数的返回值代表了执行结果，非零返回值会导致模块被识别为安装失败 **
 
-- `config.sh` 和 `common/util_funcs.sh` 中提供了几个额外的功能函数
+- `install.sh` 和 `common/util_funcs.sh` 中提供了几个额外的功能函数
     - add_sysprop：添加键值到 `system.prop`
     - add_sysprop_file：将整个文件附加到 `system.prop` 后
     - add_service_sh：添加 `service.sh`
@@ -115,4 +110,5 @@
 
 #### 注意事项
 - 请不要将 `common/mods/example/` 和 `common/mods/empty/` 留在正式版模块中
+- 在正式发布时应将 `DEBUG_FLAG` 设置为 `false`
 - 模块id需要符合这个正则表达式：`^[a-zA-Z][a-zA-Z0-9\._-]+$`

@@ -11,11 +11,11 @@ mod_select_no_text="不安装$mod_name"
 # 按下[音量-]后加入module.prop的内容
 mod_select_no_desc=""
 # 支持的设备，支持正则表达式
-mod_require_device="cancro|shamu|viper|keyaki_dsds"
+mod_require_device="cancro|shamu|viper|keyaki_dsds|raphael"
 # 支持的系统版本，持正则表达式
-mod_require_version="7.[0-1].[0-2]" #(7.0.0-7.1.2)
+mod_require_version="7.[0-1].[0-2]|9" #(7.0.0-7.1.2,9)
 
-if [ "`check_mod_install ''`" = "yes" ]; then
+if [ "`check_mod_install`" = "yes" ]; then
     # 已经安装过 example
     ui_print "    已经安装过example了，跳过安装？"
     ui_print "   [音量+]：yes"
@@ -31,16 +31,16 @@ fi
 mod_install_yes()
 {
     mkdir -p $MODPATH/system/app/
-    cp -r $MOD_FILES_DIR/system/app/testapp1 $MODPATH/system/app/
+    cp -r $MOD_FILES_DIR/system/app/testapp $MODPATH/system/app/
 
     # 附加值到 system.prop
     add_sysprop "ro.a.b=1"
     # 从文件附加值到 system.prop
-    add_sysprop_file $MOD_FILES_DIR/system1.prop
+    add_sysprop_file $MOD_FILES_DIR/system.prop
     # 添加service.sh
-    add_service_sh $MOD_FILES_DIR/service1.sh
+    add_service_sh $MOD_FILES_DIR/service.sh
     # 添加post-fs-data.sh
-    add_postfsdata_sh $MOD_FILES_DIR/post-fs-data1.sh
+    add_postfsdata_sh $MOD_FILES_DIR/post-fs-data.sh
 
     ui_print "    设置权限"
     set_perm_recursive  $MODPATH  0  0  0755  0644
@@ -52,21 +52,6 @@ mod_install_yes()
 # 如果不需要，请保留函数结构和return 0
 mod_install_no()
 {
-    mkdir -p $MODPATH/system/app/
-    cp -r $MOD_FILES_DIR/system/app/testapp2 $MODPATH/system/app/
-
-    # 附加值到 system.prop
-    add_sysprop "ro.a.b=2"
-    # 从文件附加值到 system.prop
-    add_sysprop_file $MOD_FILES_DIR/system2.prop
-    # 添加service.sh
-    add_service_sh $MOD_FILES_DIR/service2.sh
-    # 添加post-fs-data.sh
-    add_postfsdata_sh $MOD_FILES_DIR/post-fs-data2.sh
-
-    ui_print "    设置权限"
-    set_perm_recursive  $MODPATH  0  0  0755  0644
-    
     return 0
 }
 

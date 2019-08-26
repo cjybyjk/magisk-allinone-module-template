@@ -6,10 +6,10 @@
 ### Thanks to
 - 包包包先生 @ coolapk
 
-### Latest version: 1.0.8
+### Latest version: 1.1.0
 
 ### 使用方法请查看以下文件
 - [guide.md](guide.md)
 - [config.sh](config.sh)
-- [common/mods/example/*](common/mods/example/)
-- common/mods/ 里的各个调度模块(perf_*)
+- [mods/example/*](common/mods/example/)
+- mods/ 里的各个调度模块(perf_*)

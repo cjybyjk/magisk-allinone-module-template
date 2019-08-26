@@ -3,5 +3,3 @@ name=Magisk多合一模块示例
 version=v1
 versionCode=1
 author=cjybyjk @ coolapk
-minMagisk=17000
-description=安装的功能：

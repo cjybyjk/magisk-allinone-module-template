@@ -1,27 +1,29 @@
+# 建议不要在模块安装过程中改动下列函数
+
 # $1:prop_text
 add_sysprop()
 {
-  echo "$1" >> $MODPATH/system.prop
+  echo "$1" >> $TMPDIR/system.prop
 }
 
 # $1:path/to/file
 add_sysprop_file()
 {
-  cat "$1" >> $MODPATH/system.prop
+  cat "$1" >> $TMPDIR/system.prop
 }
 
 # $1:path/to/file
 add_service_sh()
 {
   LATESTARTSERVICE=true
-  cp "$1" $MODPATH/service_sh/
+  cp "$1" $MODPATH/service_$MOD.sh
 }
 
 # $1:path/to/file
 add_postfsdata_sh()
 {
   POSTFSDATA=true
-  cp "$1" $MODPATH/postfsdata_sh/
+  cp "$1" $MODPATH/post-fs-data_$MOD.sh
 }
 
 # $1:str
