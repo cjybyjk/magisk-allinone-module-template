@@ -17,6 +17,7 @@ add_service_sh()
 {
   LATESTARTSERVICE=true
   cp "$1" $MODPATH/service_$MOD.sh
+  chmod 0755 $MODPATH/service_$MOD.sh
 }
 
 # $1:path/to/file
@@ -24,6 +25,7 @@ add_postfsdata_sh()
 {
   POSTFSDATA=true
   cp "$1" $MODPATH/post-fs-data_$MOD.sh
+  chmod 0755 $MODPATH/post-fs-data_$MOD.sh
 }
 
 # $1:str
