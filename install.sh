@@ -4,6 +4,8 @@
 #
 ##########################################################################################
 
+VERSION="1.1.1"
+
 # 调试模式标记
 DEBUG_FLAG=true
 
@@ -86,8 +88,9 @@ print_modname() {
   ui_print "*******************************"
   ui_print "   Magisk多合一模块示例   "
   ui_print "*******************************"
-  ui_print "  你的设备:$var_device"
-  ui_print "  系统版本:$var_version"
+  ui_print "  你的设备: $var_device"
+  ui_print "  系统版本: $var_version"
+  ui_print "  多合一模板: $VERSION"
 }
 
 initmods()
