@@ -191,6 +191,16 @@ on_install() {
       source $MOD/mod_info.sh
       $DEBUG_FLAG && ui_print "  DEBUG: load $MOD"
       $DEBUG_FLAG && ui_print "  DEBUG: mod's name: $mod_name"
+      $DEBUG_FLAG && ui_print "  DEBUG: mod's device requirement: $mod_require_device"
+      $DEBUG_FLAG && ui_print "  DEBUG: mod's version requirement: $mod_require_version"
+      if [ -z $mod_require_device ]; then
+        mod_require_device=$var_device
+        $DEBUG_FLAG && ui_print "  DEBUG: replace mod's device requirement: $mod_require_device"
+      fi
+      if [ -z $mod_require_version ]; then
+        mod_require_version=$var_version
+        $DEBUG_FLAG && ui_print "  DEBUG: replace mod's version requirement: $mod_require_version"
+      fi
       if $MOD_SKIP_INSTALL ; then
         ui_print "  跳过[$mod_name]安装"
         initmods
