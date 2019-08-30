@@ -1,5 +1,6 @@
 mod_name="西瓜调度(xga2) by 老特写 @ coolapk"
 mod_install_info="是否安装 西瓜调度(xga2)"
+mod_install_desc="调度模块可不是玄学"
 mod_select_yes_text="安装"
 mod_select_yes_desc="[西瓜调度(xga2)]"
 mod_select_no_text="不安装"

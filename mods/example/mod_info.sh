@@ -1,5 +1,7 @@
 # 安装时显示的模块名称
 mod_name="测试模板"
+# 模块介绍
+mod_install_desc="这是个模板啦"
 # 安装时显示的提示
 mod_install_info="是否安装$mod_name"
 # 按下[音量+]选择的功能提示

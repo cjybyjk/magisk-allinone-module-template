@@ -1,5 +1,6 @@
 mod_name="空模板"
 mod_install_info=""
+mod_install_desc=""
 mod_select_yes_text=""
 mod_select_yes_desc=""
 mod_select_no_text=""

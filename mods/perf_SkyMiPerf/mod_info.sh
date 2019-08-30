@@ -1,5 +1,6 @@
 mod_name="星空调度 by 星空未来 @ coolapk"
 mod_install_info="是否安装 星空调度"
+mod_install_desc="调度模块可不是玄学"
 mod_select_yes_text="安装"
 mod_select_yes_desc="[星空调度]"
 mod_select_no_text="不安装"

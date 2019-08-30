@@ -6,7 +6,7 @@
 ### Thanks to
 - 包包包先生 @ coolapk
 
-### Latest version: 1.1.1
+### Latest version: 1.1.2
 
 ### 使用方法请查看以下文件
 - [guide.md](guide.md)

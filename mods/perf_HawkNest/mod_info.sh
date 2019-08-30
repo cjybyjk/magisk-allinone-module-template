@@ -1,5 +1,6 @@
 mod_name="HawkNest调度 by TSU守望者 @ coolapk"
 mod_install_info="是否安装 HawkNest调度"
+mod_install_desc="调度模块可不是玄学"
 mod_select_yes_text="安装"
 mod_select_yes_desc="[HawkNest调度]"
 mod_select_no_text="不安装"

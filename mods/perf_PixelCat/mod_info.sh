@@ -1,5 +1,6 @@
 mod_name="橘猫调度 by 橘猫520 @ coolapk"
 mod_install_info="是否安装 橘猫调度"
+mod_install_desc="调度模块可不是玄学"
 mod_select_yes_text="安装"
 mod_select_yes_desc="[橘猫调度]"
 mod_select_no_text="不安装"

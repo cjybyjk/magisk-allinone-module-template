@@ -4,7 +4,7 @@
 #
 ##########################################################################################
 
-VERSION="1.1.1"
+VERSION="1.1.2"
 
 # 调试模式标记
 DEBUG_FLAG=true
@@ -215,6 +215,7 @@ on_install() {
         ui_print "   [$mod_name]不支持你的系统版本。"
       else
         ui_print "  [$mod_name]安装"
+        ui_print "  - 介绍: $mod_install_desc"
         ui_print "  - 请按音量键选择$mod_install_info -"
         ui_print "   [音量+]：$mod_select_yes_text"
         ui_print "   [音量-]：$mod_select_no_text"
