@@ -3,13 +3,13 @@
 # $1:prop_text
 add_sysprop()
 {
-  echo "$1" >> $TMPDIR/system.prop
+  echo "$1" >> $MODPATH/system.prop
 }
 
 # $1:path/to/file
 add_sysprop_file()
 {
-  cat "$1" >> $TMPDIR/system.prop
+  cat "$1" >> $MODPATH/system.prop
 }
 
 # $1:path/to/file
