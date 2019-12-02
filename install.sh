@@ -4,7 +4,7 @@
 #
 ##########################################################################################
 
-VERSION="1.1.3"
+VERSION="1.1.4"
 
 # 调试模式标记
 DEBUG_FLAG=true
@@ -14,7 +14,7 @@ PROPFILE=false
 POSTFSDATA=false
 LATESTARTSERVICE=false
 
-var_device="`grep_prop ro.product.device`"
+var_device="`grep_prop ro.product.*device`"
 var_version="`grep_prop ro.build.version.release`"
 
 ##########################################################################################

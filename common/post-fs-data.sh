@@ -8,5 +8,5 @@ MODDIR=${0%/*}
 
 for scripts in $MODDIR/post-fs-data_*.sh
 do
-    $scripts $MODDIR
+    $scripts
 done

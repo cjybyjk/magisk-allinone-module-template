@@ -10,6 +10,7 @@ add_sysprop()
 add_sysprop_file()
 {
   cat "$1" >> $MODPATH/system.prop
+  echo -e "\n" >> $MODPATH/system.prop
 }
 
 # $1:path/to/file
